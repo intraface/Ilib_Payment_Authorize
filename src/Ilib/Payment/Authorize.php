@@ -1,15 +1,9 @@
 <?php
 
-class Ilib_Payment_Authorize
+abstract class Ilib_Payment_Authorize
 {
     
     
     
-    
-    
-    
-    
-    
-    
-    
+        
 }
