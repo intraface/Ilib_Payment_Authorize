@@ -68,6 +68,8 @@ abstract class Ilib_Payment_Authorize_Form extends Ilib_Payment_Authorize
     /**
      * Constructor 
      * 
+     * @todo $errorpage is no longer the errorpage, but the base url of the payment. The errorpage url is created from this
+     * 
      * @param string $merchant merchant
      * @param string $verification_key verification key
      * @param integer $order_number order number
