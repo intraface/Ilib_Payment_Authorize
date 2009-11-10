@@ -149,13 +149,19 @@ abstract class Ilib_Payment_Authorize_Form extends Ilib_Payment_Authorize
      * return the currency
      * @return string
      */
-    abstract public function getCurrency();
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
     
     /**
      * Returns the amount 
      * @return float
      */
-    abstract public function getAmount();
+    public function getAmount()
+    {
+        return new Ilib_Variable_Float($this->amount);
+    }
     
     /**
      * Returns errore message if is set

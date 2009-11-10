@@ -147,11 +147,11 @@ abstract class Ilib_Payment_Authorize_Prepare extends Ilib_Payment_Authorize
     
     /**
      * Returns amount
-     * @return float amount
+     * @return object Ilib_Variable_Float with amount
      */
     public function getAmount()
     {
-        return $this->amount;
+        return new Ilib_Variable_Float($this->amount);
     }
     
     /**
