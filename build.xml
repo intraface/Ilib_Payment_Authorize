@@ -4,7 +4,7 @@
     <taskdef classname="phing.tasks.ext.IlibPearDeployerTask" name="peardeploy" />
 
     <property name="package-name" value="${phing.project.name}" />
-    <property name="version" value="1.0.0" />
+    <property name="version" value="1.0.1" />
     <property name="stability" value="stable" />
     <property name="pear.channel" value="public.intraface.dk" />
 
@@ -23,8 +23,8 @@
     </target>
 
     <target name="export">
-        <echo msg="Exporting SVN files" />
-        <exec command="svn export ${source.dir}/src ${build.dir}/temp" />
+        <echo msg="Cloning git repository" />
+        <exec command="git clone git://github.com/intraface/Ilib_Payment_Authorize.git ${build.dir}/temp" />
         <mkdir dir="${build.dir}/package/${package-name}-${version}" />
         <copy todir="${build.dir}/package/${package-name}-${version}">
             <filterchain>
@@ -32,7 +32,7 @@
                     <token key="VERSION" value="${version}" />
                 </replacetokens>
             </filterchain>
-            <fileset dir="${build.dir}/temp">
+            <fileset dir="${build.dir}/temp/src">
                 <include name="**" />
             </fileset>
         </copy>
@@ -43,7 +43,7 @@
             <name>${package-name}</name>
             <summary>Package for easy implementation of online payment authorizing.</summary>
             <channel>${pear.channel}</channel>
-            <description>Packe for easy implementation of online payment authorizing.</description>
+            <description>Package for easy implementation of online payment authorizing.</description>
             <lead user="lsolesen" name="Lars Olesen" email="lars@legestue.net" />
             <lead user="sune.t.jensen" name="Sune Jensen" email="sj@sunet.dk" />
             <license>LGPL</license>
@@ -54,7 +54,7 @@
             <dependencies>
                 <php minimum_version="5.2.0" />
                 <pear minimum_version="1.6.0" recommended_version="1.6.1" />
-                <package name="Ilib_Variable" channel="public.intraface.dk" recommended_version="1.0.0" minimum_version="1.0.0" />
+                <package name="Ilib_Variable" channel="public.intraface.dk" minimum_version="1.0.0" />
             </dependencies>
             <notes>* Implemented Ilib_Variable on amounts</notes>
         </d51pearpkg2>
